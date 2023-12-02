@@ -58,7 +58,6 @@ public static class TaskA
             }
             if (correctGame)
             {
-                Console.WriteLine($"{game[0]} is correct");
                 sumGamesIds += int.Parse(game[0].Split(" ")[1]);
             }
         }
@@ -67,6 +66,6 @@ public static class TaskA
     }
     
     private static string[] ReadFile()
-        => File.ReadAllLines(@"D:\Advent-of-Code\Year2023\Day02\input.txt");
+        => File.ReadAllLines(@"D:\Advent-of-Code\Year2023\Day02\inputA.txt");
 
 }

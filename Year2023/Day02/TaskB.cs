@@ -14,55 +14,41 @@ public static class TaskB
 
     private static int Solve(string[] input)
     {
-        int powerOfColours = 0;
-        int sumOfColours = 0;
+        var powerOfColours = 0;
+        var sumOfColours = 0;
 
         foreach (var line in input)
         {
-            List<List<int>> matrixOfColours = new List<List<int>>();
             var game = line.Split(":");
             var rounds = game[1].Split(";");
             int blueCount = 0, greenCount = 0, redCount = 0;
             
             foreach (var round in rounds)
             {
-                var cubes = round.Trim().Replace(",", "").Split(" ");
-                for (int i = 0; i < cubes.Length; i += 2)
+                var cubes = round.Split(new char[] {' ', ','}, StringSplitOptions.RemoveEmptyEntries);
+                for (var i = 0; i < cubes.Length; i += 2)
                 {
-                    int count = int.Parse(cubes[i]);
-                    string colour = cubes[i + 1];
-                    if (colour == "blue")
+                    var count = int.Parse(cubes[i]);
+                    var colour = cubes[i + 1];
+                    switch (colour)
                     {
-                        if (blueCount < count)
-                        {
-                            blueCount = count;
-                        }
-                    }
-
-                    if (colour == "green")
-                    {
-                        if (greenCount < count)
-                        {
-                            greenCount = count;
-                        }
-                    }
-
-                    if (colour == "red")
-                    {
-                        if (redCount < count)
-                        {
-                            redCount = count;
-                        }
+                        case "blue":
+                            blueCount = (blueCount < count) ? count : blueCount;
+                            break;
+                        case "green":
+                            greenCount = (greenCount < count) ? count : greenCount;
+                            break; 
+                        case "red":
+                            redCount = (redCount < count) ? count : redCount;
+                            break;
                     }
                 }
             }
-
             sumOfColours += blueCount * greenCount * redCount;
         }
-
         return sumOfColours;
     }
 
     private static string[] ReadFile()
-        => File.ReadAllLines(@"D:\Advent-of-Code\Year2023\Day02\input.txt");
+        => File.ReadAllLines(@"D:\Advent-of-Code\Year2023\Day02\inputB.txt");
 }

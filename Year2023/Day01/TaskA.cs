@@ -15,7 +15,7 @@ public static class TaskA
         foreach (var line in input)
         {
             int a = 0, b = 0;
-            foreach (var letter in line.Where(letter => letter >= 48 && letter <= 57))
+            foreach (var letter in line.Where(letter => letter >= 1 && letter <= 9))
             {
                 if (a == 0)
                 {
@@ -35,6 +35,6 @@ public static class TaskA
     }
     
     private static string[] ReadFile()
-        => File.ReadAllLines(@"D:\Advent-of-Code\Year2023\Day01\input.txt");
+        => File.ReadAllLines(@"D:\Advent-of-Code\Year2023\Day01\inputA.txt");
 
 }

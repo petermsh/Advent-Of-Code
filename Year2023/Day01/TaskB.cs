@@ -39,7 +39,7 @@ public class TaskB
             var changedLine = sb.ToString();
 
             int a = 0, b = 0;
-            foreach (var letter in changedLine.Where(letter => letter >= 48 && letter <= 57))
+            foreach (var letter in changedLine.Where(char.IsDigit))
             {
                 if (a == 0)
                 {
@@ -59,5 +59,5 @@ public class TaskB
     }
 
     private static string[] ReadFile()
-        => File.ReadAllLines(@"D:\Advent-of-Code\Year2023\Day01\input.txt");
+        => File.ReadAllLines(@"D:\Advent-of-Code\Year2023\Day01\inputB.txt");
 }
