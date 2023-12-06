@@ -58,14 +58,10 @@ public static class Day06
                     .Skip(1)
                 ));
 
-        var numberOfWays = 0;
-        for (int j = 0; j < time; j++)
-        {
-            if (j * (time - j) > distance)
-                numberOfWays++;
-        }
+        var x1 = (int) Math.Floor(time + Math.Sqrt(Math.Pow(time, 2) - 4 * distance) / 2);
+        var x2 = (int) Math.Ceiling(time - Math.Sqrt(Math.Pow(time, 2) - 4 * distance) / 2);
 
-        return numberOfWays;
+        return x1 - x2 + 1;
     }
 
 }
